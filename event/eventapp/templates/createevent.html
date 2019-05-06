@@ -1,0 +1,230 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+	<style>
+	input[type="text"]
+	{
+
+	 width:100%;
+
+	}
+	body{
+		margin:0;
+		padding:0;
+		font-family:sans-serif;
+		<!--background:url(home-banner.jpg) no-repeat;-->
+		background-size:cover;
+		}
+		.login-box{
+		width:280px;
+		position:absolute;
+		top:50%;
+		left:50%;
+		transform:translate(-50%,-50%);
+		color:white;
+		}
+		.login-box h1{
+		<!--float:left;-->
+		font-size:40px;
+		border-bottom:6px solid green;
+		margin-bottom:40px;
+		padding:13px 0;
+		}
+		.text-box{
+		width:100%;
+		overflow:hidden;
+		font-size:20px;
+		margin:8px 0;
+		padding:8px 0;
+
+		border-bottom:1px solid blue;
+		}
+		.text-box2{
+		width:100%;
+		overflow:hidden;
+		font-size:20px;
+		margin:8px 0;
+		padding:8px 0;
+		border-bottom:1px solid blue;
+		}
+		.text-box3{
+		width:100%;
+		overflow:hidden;
+		font-size:20px;
+		margin:8px 0;
+		padding:8px 0;
+		border-bottom:1px solid blue;
+		}
+		.text-box4{
+		width:100%;
+		overflow:hidden;
+		font-size:20px;
+		margin:8px 0;
+		padding:8px 0;
+		border-bottom:1px solid blue;
+		}
+		.text-box5{
+		width:100%;
+		overflow:hidden;
+		font-size:20px;
+		margin:8px 0;
+		padding:8px 0;
+		border-bottom:1px solid blue;
+		}
+		.text-box i{
+		width:100%;
+		float:left;
+		text-align:center;
+		}
+		.text-box input{
+		border:none;
+		outline:none;
+		background:none;
+		color:black;
+		font-size:18px;
+		float:left;
+		margin:0 10px;
+		}
+		.text-box2 input{
+		border:none;
+		outline:none;
+		background:none;
+		color:black;
+		font-size:18px;
+		width;80%;
+		float:left;
+		margin:0 10px;
+		}
+		.text-box3 input{
+		border:none;
+		outline:none;
+		background:none;
+		color:black;
+		font-size:18px;
+		width;80%;
+		float:left;
+		margin:0 10px;
+		}
+		.text-box4 input{
+		border:none;
+		outline:none;
+		background:none;
+		color:black;
+		font-size:18px;
+		width;80%;
+		float:left;
+		margin:0 10px;
+		}
+		.text-box5 input{
+		border:none;
+		outline:none;
+		background:none;
+		color:black;
+		font-size:18px;
+		width;80%;
+		float:left;
+		margin:0 10px;
+		}
+		.text-box6 input{
+		border:none;
+		outline:none;
+		background:none;
+		color:black;
+		font-size:18px;
+
+		width;80%;
+		float:left;
+		margin:0 10px;
+		}
+		.btn1{
+		width:100%;
+		border:2px solid green;
+		background:#6666e2;
+		color:white;
+		padding:5px;
+		font-size:18px;
+
+		cursor:pointer;
+		margin:12px 0;
+
+		}
+	</style>
+
+        <!--================Header Menu Area =================-->
+        {% include 'header.html' %}
+        <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+				<div class="container">
+					<div class="banner_content text-center">
+						<div class="page_link">
+							<a href='/'>Home</a>
+							<a href="signup1">Create Event</a>
+						</div>
+						<h2>Fill the details below</h2>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+
+        <!--================Team Area =================-->
+        <form class="team_area p_120" method="POST">
+			{% csrf_token %}
+        	<div class="container">
+        		<div class="main_title">
+				<div class="text-box">
+
+
+				<!--<i class="fas fa-user"></i>-->
+				<input type="text" placeholder="Name of Event" name="event_name" value="" required>
+				</div>
+				<div class="text-box2">
+				<!--<input type="text" placeholder="Type of event" name="event_type" value="" required>-->
+				<!--</div>-->
+				<select name="event_type" placeholder="Type of Event" required >
+					<option selected="True" disabled>Type of Event</option>
+					<option value="technical">Technical</option>
+					<option value="nonTechnical">NonTechnical</option>
+					<option value="cultural">Cultural</option>
+				</select>
+                <div class="text-box2">
+				<input type="text" placeholder="Location" name="location" value="" required>
+				</div>
+				<div class="text-box3">
+				<input type="date" placeholder="date" name="date" value="" required>
+				</div>
+				<div class="text-box3">
+				<input type="time" placeholder="time" name="time1" value="" required>
+				</div>
+                <div class="text-box2">
+				<input type="number" placeholder="Registration Fees" name="fees" value="" required>
+				</div>
+				<!--<input type="text" placeholder="Age" name="age" value="">-->
+				<!--</div>	-->
+				<!--<div  style="width:100%;">-->
+				<!--<select name="gender" placeholder="Gender" required >-->
+					<!--<option selected="True" disabled>please select gender</option>-->
+					<!--<option value="Male"  >Male</option>-->
+					<!--<option value="Female">Female</option>-->
+				<!--</select>-->
+					<!--</div>-->
+
+				<div class="text-box4">
+				<input type="email" placeholder="Email" name="email" value="" required>
+				</div>
+                 <div class="text-box6">
+                     <textarea rows="4" cols="110" style="font-size:18px" placeholder="Details of event " name="event_details" value="" required></textarea>
+				</div>
+				</div>
+				<input class="btn1" type="submit" name="" value="Create Event">
+
+				</div>
+			</div>
+		</form>
+
+
+
+        <!--================End Team Area =================-->
+        {% include 'footer.html' %}

@@ -1,0 +1,112 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="img/favicon.png" type="image/png">
+        <title>Eventure Multi</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/lightbox/simpleLightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/animate-css/animate.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    </head>
+    <body>
+        
+        <!--================Header Menu Area =================-->
+       {% include 'header.html' %}
+        <!--================Header Menu Area =================-->
+        
+        <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+				<div class="container">
+					<div class="banner_content text-center">
+						<div class="page_link">
+							<a href="/event">Home</a>
+							<a href="/event/venue">Venue</a>
+						</div>
+						<h2>Event Venue</h2>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Welcome Area =================-->
+        <section class="welcome_area p_120">
+        	<div class="container">
+        		<div class="welcome_inner row">
+        			<div class="col-lg-5">
+        				<div class="welcome_img">
+        					<img class="img-fluid" src="img/welcome-1.jpg" alt="">
+        				</div>
+        			</div>
+        			<div class="col-lg-6 offset-lg-1">
+        				<div class="welcome_text">
+        					<h3>Welcome to Eventure</h3>
+        					<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.</p>
+        					<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace.</p>
+        					<a class="main_btn" href="#">View More Details</a>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <!--================End Welcome Area =================-->
+        
+        <!--================End Event Schedule Area =================-->
+        <section class="home_map_area">
+        	<div id="mapBox2" class="mapBox2" 
+				data-lat="40.701083" 
+				data-lon="-74.1522848" 
+				data-zoom="13" 
+				data-info="PO Box CT16122 Collins Street West, Victoria 8007, Australia."
+				data-mlat="40.701083"
+				data-mlon="-74.1522848">
+			</div>
+       		<div class="home_details">
+				<div class="container">
+					<div class="box_home_details">
+						<div class="media">
+							<div class="d-flex">
+								<i class="lnr lnr-home"></i>
+							</div>
+							<div class="media-body">
+								<h4>California, United States</h4>
+								<p>Santa monica bullevard</p>
+							</div>
+						</div>
+						<div class="media">
+							<div class="d-flex">
+								<i class="lnr lnr-clock"></i>
+							</div>
+							<div class="media-body">
+								<h4>Monday to Wednesday</h4>
+								<p>17-19 June, 218</p>
+							</div>
+						</div>
+						<div class="media">
+							<div class="d-flex">
+								<i class="lnr lnr-envelope"></i>
+							</div>
+							<div class="media-body">
+								<h4>support@colorlib.com</h4>
+								<p>Send us your query anytime!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+       		</div>
+        </section>
+        <!--================End Event Schedule Area =================-->
+        {% include 'footer.html' %}

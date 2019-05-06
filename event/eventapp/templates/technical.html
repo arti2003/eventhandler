@@ -1,0 +1,257 @@
+{% load static %}
+{% include 'header.html' %}
+<style>
+.button1234 {
+  display: inline-block;
+  flaot:left;
+  border-radius: 7px;
+  background-color: #6666e2;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 25px;
+  padding:18px;
+  width: 170px;
+
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0px 0px 0px 800px;
+}
+
+.button1234 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button1234 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button1234:Register span {
+  padding-right: 25px;
+}
+
+.button1234:Register span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+
+<section class="event_schedule_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2>technical events</h2>
+        			<!--<p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $.17 each.</p>-->
+        		</div>
+        		<div class="event_schedule_inner">
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Events</a>
+						</li>
+						<!--<li class="nav-item">-->
+							<!--<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Day 02</a>-->
+						<!--</li>-->
+						<!--<li class="nav-item">-->
+							<!--<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Day 03</a>-->
+						<!--</li>-->
+					</ul>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+							{% for i in data %}
+							<div class="media">
+								<div class="d-flex">
+									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
+								</div>
+								<div class="media-body" style="float:left;">
+									<h5>{{i.time1}}</h5>
+									<h4>{{i.event_name}}</h4>
+                                    <p>Fees:{{i.fees}}</p>
+									<p>Location:{{i.location}}</p>
+
+									{% if i.registered == 'False' %}
+									<button type="submit" class="button1234" style="color: white;"><span>Register </span></button>
+									{% else %}
+
+									<button type="submit" class="button1234"><span>Success </span></button>
+									{% endif %}
+
+								</div>
+							</div>
+							{% endfor %}
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--&lt;!&ndash;<div class="media-body">&ndash;&gt;-->
+									<!--&lt;!&ndash;<h5>11.00 am</h5>&ndash;&gt;-->
+									<!--&lt;!&ndash;<h4>Cos motech expo</h4>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<p>(Interactve exibits and live entertainment)</p>&ndash;&gt;-->
+									<!--&lt;!&ndash;<p>Fees:50</p>&ndash;&gt;-->
+									<!--&lt;!&ndash;<button class="button1234"><span>Register </span></button>&ndash;&gt;-->
+								<!--&lt;!&ndash;</div>&ndash;&gt;-->
+							<!--</div>-->
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--<div class="media-body">-->
+									<!--<h5>01.00 pm</h5>-->
+									<!--<h4>Jetbrains</h4>-->
+                                    <!--<p>(rapid questions and answering rounds)</p>-->
+									<!--<p>Fees:30</p>-->
+									<!--<button class="button1234"><span>Register </span></button>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--<div class="media-body">-->
+									<!--<h5>02.00 pm</h5>-->
+									<!--<h4>Colosseum 19</h4>-->
+                                    <!--<p>(Core domains with ensuring values and guiding domains)</p>-->
+									<!--<p>Fees:30</p>-->
+									<!--<button class="button1234"><span>Register </span></button>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--<div class="media-body">-->
+									<!--<h5>04.00 pm</h5>-->
+												<!--<h4>Graphic Design</h4>-->
+                                    <!--<p>(various tyoes of designing and editing)</p>-->
+									<!--<p>Fees:50</p>-->
+									<!--<button class="button1234"><span>Register </span></button>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">-->
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--<div class="media-body">-->
+									<!--<h5>10.00 am</h5>-->
+									<!--<h4>Quiz</h4>-->
+                                    <!--<p>(quiz on technical topics)</p>-->
+									<!--<p>Fees:30</p>-->
+									<!--<button class="button1234"><span>Register </span></button>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--<div class="media-body">-->
+									<!--<h5>11.00 am</h5>-->
+									<!--<h4>Developers Date</h4>-->
+                                    <!--<p>(code race)</p>-->
+									<!--<p>Fees:40</p>-->
+									<!--<button class="button1234"><span>Register </span></button>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--<div class="media-body">-->
+									<!--<h5>09.00 am</h5>-->
+									<!--<h4>Technoholix</h4>-->
+                                    <!--<p>(fusion of science technology and entertainment)</p>-->
+									<!--<p>Fees:40</p>-->
+									<!--<button class="button1234"><span>Register </span></button>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--<div class="media-body">-->
+									<!--<h5>01.00 pm</h5>-->
+									<!--<h4>Dazzle coding</h4>-->
+                                    <!--<p>(coding puzzles)</p>-->
+									<!--<p>Fees:40</p>-->
+									<!--<button class="button1234"><span>Register </span></button>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--<div class="media-body">-->
+									<!--<h5>03.00 pm</h5>-->
+									<!--<h4>Googler</h4>-->
+                                    <!--<p>(talks and hands-on learning with google experts)</p>-->
+									<!--<p>Fees:40</p>-->
+									<!--<button class="button1234"><span>Register </span></button>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">-->
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--<div class="media-body">-->
+									<!--<h5>04.00 pm</h5>-->
+									<!--<h4>Coding challenge</h4>-->
+                                    <!--<p>(will give code on any topic)</p>-->
+									<!--<p>Fees:40</p>-->
+									<!--<button class="button1234"><span>Register </span></button>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--<div class="media-body">-->
+									<!--<h5>09.00 am</h5>-->
+									<!--<h4>Opening Ceremony</h4>-->
+									<!--<p>Fees:</p>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--<div class="media-body">-->
+									<!--<h5>09.00 am</h5>-->
+									<!--<h4>Opening Ceremony</h4>-->
+									<!--<p>Fees:</p>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--<div class="media-body">-->
+									<!--<h5>09.00 am</h5>-->
+									<!--<h4>Opening Ceremony</h4>-->
+									<!--<p>Fees:</p>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="media">-->
+								<!--<div class="d-flex">-->
+									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
+								<!--</div>-->
+								<!--<div class="media-body">-->
+									<!--<h5>09.00 am</h5>-->
+									<!--<h4>Opening Ceremony</h4>-->
+									<!--<p>Fees:</p>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+					</div>
+        		</div>
+        	</div>
+        </section>
+{% include 'footer.html' %}
