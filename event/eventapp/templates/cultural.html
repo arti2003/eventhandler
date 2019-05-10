@@ -66,6 +66,9 @@
 								<div class="d-flex">
 									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
 								</div>
+								<form action="/cultural" method="POST">
+									{% csrf_token %}
+									<input type="text" name="id" value="{{i.id}}" hidden>
 								<div class="media-body" style="float:left;">
 									<h5>{{i.time1}}</h5>
 									<h4>{{i.event_name}}</h4>
@@ -80,6 +83,7 @@
 									{% endif %}
 
 								</div>
+								</form>
 							</div>
 							{% endfor %}
 							<!--<div class="media">-->

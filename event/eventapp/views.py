@@ -14,7 +14,7 @@ from django.core.mail import BadHeaderError, send_mail
 import smtplib, ssl
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .models import UserRegister,CreateEvent
+from .models import UserRegister,CreateEvent,Participate,Contact
 
 from django.shortcuts import render, redirect
 # Create your views here.
@@ -28,7 +28,29 @@ def blog(request):
     return render(request, 'blog.html')
 
 def contact(request):
-    return render(request, 'contact.html')
+    if (request.method == 'POST'):
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        todo = Contact(name=name, email=email, subject=subject, message=message)
+        todo.save()
+
+        print(str(name))
+
+        connection = smtplib.SMTP('smtp.gmail.com', 587)
+        connection.ehlo()
+        connection.starttls()
+        connection.login('eventhandlerofficial@gmail.com', 'eventhandler@123')
+        connection.sendmail('eventhandlerofficial@gmail.com', email,
+                            ("Subject: "+str(subject)+"\n\n"+"Hello "+str(name)+"\n Your email address:- "+str(email)+"\n Thank you for sending message \n"+str(message)))
+        connection.sendmail('eventhandlerofficial@gmail.com','eventhandlerofficial@gmail.com',
+                            ("Subject: "+str(subject)+"\n\n"+"Name of the Sender:- "+str(name)+"\n email address:- "+str(email)+"\n message:- \n"+str(message)))
+        connection.quit()
+        return redirect('/')
+    else:
+        return render(request, 'contact.html')
+
 
 def elements(request):
     return render(request, 'elements.html')
@@ -96,6 +118,20 @@ def createevent(request):
 
 
 def schedule(request):
+    if (request.method == 'POST'):
+        date1 = request.POST.get('date')
+        # id1 = request.POST.get('id')
+        print('00000000000000000000000000000000000000000',date1)
+
+
+        data = CreateEvent.objects.filter(date=date1)
+        print('11111111111111111111111111111111111111',data)
+
+
+        return render(request, 'schedule.html', {'data':data})
+        # if(date==None)
+
+
     return render(request, 'schedule.html')
 
 
@@ -122,8 +158,8 @@ def signup1(request):
         connection.starttls()
         connection.login('eventhandlerofficial@gmail.com', 'eventhandler@123')
         connection.sendmail('eventhandlerofficial@gmail.com', email, (
-                    "Subject: Registered Sucessfull" + "\n\n" + "Thank You " + str(
-                username) + " for registering in Event Handler"))
+                "Subject: Registered Sucessfull" + "\n\n" + "Thank You " + str(
+            username) + " for registering in Event Handler"))
         return render(request, 'loginnew.html')
     else:
         return render(request, 'signupnew.html')
@@ -136,19 +172,46 @@ def venue(request):
     return render(request, 'venue.html')
 
 def technical(request):
-    data = CreateEvent.objects.filter(event_type='technical')
+    data1 = CreateEvent.objects.filter(event_type='technical')
+    if (request.method == 'POST'):
+        id1 = request.POST.get('id')
+        data = CreateEvent.objects.get(id=id1)
+        data.registered = True
+        data.save()
 
-    return render(request, 'technical.html', {'data':data})
+        return render(request, 'technical.html', {'data': data1})
+
+    return render(request, 'technical.html', {'data':data1})
 
 def cultural(request):
-    data = CreateEvent.objects.filter(event_type='cultural')
+    data1 = CreateEvent.objects.filter(event_type='cultural')
+    if (request.method == 'POST'):
+        id1 = request.POST.get('id')
+        data = CreateEvent.objects.get(id=id1)
+        data.registered = True
+        data.save()
 
-    return render(request, 'cultural.html', {'data':data})
+        return render(request, 'technical.html', {'data': data1})
+
+    return render(request, 'cultural.html', {'data':data1})
 
 def nontech(request):
-    data = CreateEvent.objects.filter(event_type='nonTechnical')
+    data1 = CreateEvent.objects.filter(event_type='nonTechnical')
+    if (request.method == 'POST'):
+        id1 = request.POST.get('id')
+        data = CreateEvent.objects.get(id=id1)
+        data.registered = True
+        data.save()
 
-    return render(request, 'nontech.html', {'data':data})
+        # id=request.user.id
+
+        # id1 = request.POST.get('id')
+        # user.id = request.POST.get('id')
+        #
+        # data = CreateEvent.objects.create
+
+        return render(request, 'nontech.html', {'data': data1})
+    return render(request, 'nontech.html', {'data':data1})
 
 def logout1(request):
     logout(request)

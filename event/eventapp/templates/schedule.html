@@ -2,8 +2,77 @@
 
         <!--================Header Menu Area =================-->
         {% include 'header.html' %}
+<style>
+.button1234 {
+  display: inline-block;
+  flaot:left;
+  border-radius: 7px;
+  background-color: #6666e2;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 25px;
+  padding:18px;
+  width: 170px;
+
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0px 0px 0px 800px;
+}
+
+.button1234 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button1234 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button1234:Register span {
+  padding-right: 25px;
+}
+
+.button1234:Register span:after {
+  opacity: 1;
+  right: 0;
+}
+.date123{
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.2rem;
+  <!--display: block;-->
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  background-color: #F0FFFF;
+}
+.butt {
+  background-color: white;
+  color: black;
+  <!--float:left;-->
+  border-radius: 7px;
+  padding: 5px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  border: 2px solid #008CBA;
+}
+
+.butt:hover {
+  background-color: #008CBA;
+  color: white;
+}
+</style>
         <!--================Home Banner Area =================-->
-        <section class="banner_area">
+<section class="banner_area" xmlns="http://www.w3.org/1999/html">
             <div class="banner_inner d-flex align-items-center">
             	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
 				<div class="container">
@@ -29,174 +98,37 @@
         		<div class="event_schedule_inner">
 					<ul class="nav nav-tabs" id="myTab" role="tablist">
 						<li class="nav-item">
-							<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Day 01</a>
+							<form action="/schedule" method="POST">
+									{% csrf_token %}
+								<h3 style="color:white;">Select Date</h3>
+							<input class="date123" type="date" name="date"  placeholder="Search.."><button class="butt" type="submit">Submit</button>
+
+							<!--<a class="nav-link active" id="home-tab" input type="text" placeholder="Search.." data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Day 01</a>-->
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Day 02</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Day 03</a>
-						</li>
+
 					</ul>
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+							{% for i in data %}
 							<div class="media">
 								<div class="d-flex">
 									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
 								</div>
+								<input type="text" name="id" value="{{i.id}}" hidden>
 								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
+									<h5>{{i.time1}}</h5>
+									<h4>{{i.event_name}}</h4>
+									<p>Fees:{{i.fees}}</p>
+									<p>Location:{{i.location}}</p>
+
 								</div>
 							</div>
-							<div class="media">
-								<div class="d-flex">
-									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
-							<div class="media">
-								<div class="d-flex">
-									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
-							<div class="media">
-								<div class="d-flex">
-									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
-							<div class="media">
-								<div class="d-flex">
-									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-							<div class="media">
-								<div class="d-flex">
-									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
-							<div class="media">
-								<div class="d-flex">
-									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
-							<div class="media">
-								<div class="d-flex">
-									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
-							<div class="media">
-								<div class="d-flex">
-									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
-							<div class="media">
-								<div class="d-flex">
-									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-							<div class="media">
-								<div class="d-flex">
-									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
-							<div class="media">
-								<div class="d-flex">
-									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
-							<div class="media">
-								<div class="d-flex">
-									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
-							<div class="media">
-								<div class="d-flex">
-									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
-							<div class="media">
-								<div class="d-flex">
-									<img src="img/schedule-1.jpg' %}" alt="">
-								</div>
-								<div class="media-body">
-									<h5>09.00 am</h5>
-									<h4>Opening Ceremony</h4>
-									<p>Speech by: Mark weins</p>
-								</div>
-							</div>
+							{% endfor %}
+
 						</div>
 					</div>
-        		</div>
+						</form>
+        		<!--</div>-->
         	</div>
         </section>
         <!--================End Event Schedule Area =================-->

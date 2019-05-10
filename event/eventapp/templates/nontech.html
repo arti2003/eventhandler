@@ -65,6 +65,9 @@
 								<div class="d-flex">
 									<img src="{% static 'img/schedule-1.jpg' %}" alt="">
 								</div>
+								<form action="/nontech" method="POST">
+									{% csrf_token %}
+									<input type="text" name="id" value="{{i.id}}" hidden>
 								<div class="media-body" style="float:left;">
 									<h5>{{i.time1}}</h5>
 									<h4>{{i.event_name}}</h4>
@@ -75,127 +78,15 @@
 									<button type="submit" class="button1234" style="color: white;"><span>Register </span></button>
 									{% else %}
 
-									<button type="submit" class="button1234"><span>Success </span></button>
+									<button type="" class="button1234" disabled><span>Success </span></button>
 									{% endif %}
 
 
 								</div>
+									</form>
 							</div>
 							{% endfor %}
-							<!--<div class="media">-->
-								<!--<div class="d-flex">-->
-									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
-								<!--</div>-->
-								<!--<div class="media-body">-->
-									<!--<h5>11.00 am</h5>-->
-									<!--<h4>Tug off War</h4>-->
-									<!--<p>Fees:50</p>-->
-									<!--<button class="button1234"><span>Register </span></button>-->
-								<!--</div>-->
-							<!--</div>-->
-							<!--<div class="media">-->
-								<!--<div class="d-flex">-->
-									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
-								<!--</div>-->
-								<!--<div class="media-body">-->
-									<!--<h5>01.00 pm</h5>-->
-									<!--<h4>Rangoli</h4>-->
-									<!--<p>Fees:30</p>-->
-									<!--<button class="button1234"><span>Register </span></button>-->
-								<!--</div>-->
-							<!--</div>-->
-							<!--<div class="media">-->
-								<!--<div class="d-flex">-->
-									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
-								<!--</div>-->
-								<!--<div class="media-body">-->
-									<!--<h5>02.00 pm</h5>-->
-									<!--<h4>Mehndi</h4>-->
-									<!--<p>Fees:20</p>-->
-									<!--<button class="button1234"><span>Register </span></button>-->
-								<!--</div>-->
-							<!--</div>-->
-							<!--<div class="media">-->
-								<!--<div class="d-flex">-->
-									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
-								<!--</div>-->
-								<!--<div class="media-body">-->
-									<!--<h5>04.00 pm</h5>-->
-									<!--<h4>Spell B</h4>-->
-									<!--<p>Fees:50</p>-->
-									<!--<button class="button1234"><span>Register </span></button>-->
-								<!--</div>-->
-							<!--</div>-->
-						<!--</div>-->
-						<!--<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">-->
-							<!--<div class="media">-->
-								<!--<div class="d-flex">-->
-									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
-								<!--</div>-->
-								<!--<div class="media-body">-->
-									<!--<h5>10.00 am</h5>-->
-									<!--<h4>Mini Militia</h4>-->
-									<!--<p>Fees:30</p>-->
-									<!--<button class="button1234"><span>Register </span></button>-->
-								<!--</div>-->
-							<!--</div>-->
-							<!--<div class="media">-->
-								<!--<div class="d-flex">-->
-									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
-								<!--</div>-->
-								<!--<div class="media-body">-->
-									<!--<h5>11.00 am</h5>-->
-									<!--<h4>Need for Speed</h4>-->
-									<!--<p>Fees:40</p>-->
-									<!--<button class="button1234"><span>Register </span></button>-->
-								<!--</div>-->
-							<!--</div>-->
-							<!--<div class="media">-->
-								<!--<div class="d-flex">-->
-									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
-								<!--</div>-->
-								<!--<div class="media-body">-->
-									<!--<h5>09.00 am</h5>-->
-									<!--<h4>Counter Strike</h4>-->
-									<!--<p>Fees:40</p>-->
-									<!--<button class="button1234"><span>Register </span></button>-->
-								<!--</div>-->
-							<!--</div>-->
-							<!--<div class="media">-->
-								<!--<div class="d-flex">-->
-									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
-								<!--</div>-->
-								<!--<div class="media-body">-->
-									<!--<h5>01.00 pm</h5>-->
-									<!--<h4>Best out of waste</h4>-->
-									<!--<p>Fees:20</p>-->
-									<!--<button class="button1234"><span>Register </span></button>-->
-								<!--</div>-->
-							<!--</div>-->
-							<!--<div class="media">-->
-								<!--<div class="d-flex">-->
-									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
-								<!--</div>-->
-								<!--<div class="media-body">-->
-									<!--<h5>03.00 pm</h5>-->
-									<!--<h4>PubG</h4>-->
-									<!--<p>Fees:Nil</p>-->
-									<!--<button class="button1234"><span>Register </span></button>-->
-								<!--</div>-->
-							<!--</div>-->
-						<!--</div>-->
-						<!--<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">-->
-							<!--<div class="media">-->
-								<!--<div class="d-flex">-->
-									<!--<img src="{% static 'img/schedule-1.jpg' %}" alt="">-->
-								<!--</div>-->
-								<!--<div class="media-body">-->
-									<!--<h5>04.00 pm</h5>-->
-									<!--<h4>Face painting</h4>-->
-									<!--<p>Fees:Nil</p>-->
-									<!--<button class="button1234"><span>Register </span></button>-->
-								<!--</div>-->
-							<!--</div>-->
+
 						</div>
 					</div>
         		</div>

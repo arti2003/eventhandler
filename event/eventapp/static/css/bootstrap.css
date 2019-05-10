@@ -8011,11 +8011,13 @@ button.bg-dark:hover {
 .mb-auto,
 .my-auto {
     margin-bottom: auto !important
+
 }
 
 .ml-auto,
 .mx-auto {
-    margin-left: auto !important
+    margin-left: auto !important;
+    margin: 0px 282px;
 }
 
 @media (min-width:576px) {
