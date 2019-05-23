@@ -93,7 +93,7 @@
         	<div class="container">
         		<div class="main_title">
         			<h2>Event Schedule</h2>
-        			<p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $.17 each.</p>
+        			<p>Please enter the date and get the relevant event on that day.A simpler step towards events.</p>
         		</div>
         		<div class="event_schedule_inner">
 					<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -109,6 +109,15 @@
 					</ul>
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+							<div>
+								{% if messages %}
+								<center><p class="alert-info" >{%for message in messages%}
+								{% if forloop.first%}
+								{{message}}
+								{% endif %}
+								{% endfor %}</p>
+								{% endif %}</center>
+							</div>
 							{% for i in data %}
 							<div class="media">
 								<div class="d-flex">

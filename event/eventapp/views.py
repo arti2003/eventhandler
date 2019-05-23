@@ -12,6 +12,7 @@ import hashlib, datetime, random
 from django.contrib.auth import authenticate, login, logout
 from django.core.mail import BadHeaderError, send_mail
 import smtplib, ssl
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import UserRegister,CreateEvent,Participate,Contact
@@ -19,7 +20,20 @@ from .models import UserRegister,CreateEvent,Participate,Contact
 from django.shortcuts import render, redirect
 # Create your views here.
 def home(request):
-    return render(request, 'index.html')
+    data1 = CreateEvent.objects.all()
+    if (request.method == 'POST'):
+        date1 = request.POST.get('date')
+        # id1 = request.POST.get('id')
+        print('00000000000000000000000000000000000000000', date1)
+
+        data = CreateEvent.objects.filter(date=date1)
+        print('11111111111111111111111111111111111111', data)
+
+        return render(request, 'index.html', {'data': data})
+        # if(date==None)
+
+
+    return render(request, 'index.html', {'data': data1})
 
 def about(request):
     return render(request, 'about-us.html')
@@ -126,7 +140,7 @@ def schedule(request):
 
         data = CreateEvent.objects.filter(date=date1)
         print('11111111111111111111111111111111111111',data)
-
+        messages.add_message(request, messages.INFO, 'Thank you for your search.')
 
         return render(request, 'schedule.html', {'data':data})
         # if(date==None)
