@@ -183,6 +183,16 @@ def single(request):
     return render(request, 'single-blog.html')
 
 def venue(request):
+    if (request.method == 'POST'):
+        loc1 = request.POST.get('location')
+        # id1 = request.POST.get('id')
+        print('00000000000000000000000000000000000000000', loc1)
+
+        data = CreateEvent.objects.filter(location=loc1)
+        print('11111111111111111111111111111111111111', data)
+        messages.add_message(request, messages.INFO, 'Thank you for your search.')
+
+        return render(request, 'venue.html', {'data': data})
     return render(request, 'venue.html')
 
 def technical(request):
